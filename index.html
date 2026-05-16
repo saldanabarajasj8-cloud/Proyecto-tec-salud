@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+
+<html>
+ <div style="text-align:center;">
+    <img src="assets/logo.jpg" style="width:200px;border-radius:50%;">
+</div>
+<br><br>
+ <div style="text-align:center;">
+Unidad hospitalaria: Hospital San Gabriel
+Dirección: Av. Paseo del Sol #2450, Tijuana, Baja California.</div>
+<style>
+
+table, th, td {
+  border:1px solid black;
+}
+
+</style>
+
+<body>
+
+<h1>Historia Clínica acorde con la NOM vigente 168-SSA1-1998</h1>
+
+<table style="width:100%">
+
+<tr>
+
+<td>
+<p>Médico tratante:</p>
+<input type="text" id="medicotratante" placeholder="Dra. Andrea Sofía Mendoza López">
+</td>
+
+<td>
+<p>Fecha de Historia Clínica:</p>
+<input type="text" id="fechadehistoriaclinica" placeholder="16 de mayo de 2026">
+</td>
+
+</tr>
+
+<tr>
+
+<td>
+<p>Nombre paciente:</p>
+<input type="text" id="nombrepaciente" placeholder="Camila Ríos Navarro">
+</td>
+
+<td>
+<p>Edad:</p>
+<input type="text" id="edad" placeholder="23 años">
+
+<p>Sexo:</p>
+<input type="text" id="sexo" placeholder="Femenino">
+</td>
+
+</tr>
+
+<tr>
+
+<td>
+<p>Domicilio:</p>
+<input type="text" id="domicilio" placeholder="Calle Las Flores #214, Col. Chapultepec, Tijuana, Baja California">
+</td>
+
+<td>
+<p>Teléfono:</p>
+<input type="text" id="telefono" placeholder="664-321-4587">
+</td>
+
+</tr>
+
+<tr>
+
+<td>
+<p>Datos completos de familiar responsable:</p>
+ <textarea placeholder="Nombre: Laura Navarro García
+* Parentesco: Madre
+* Edad: 49 años
+* Domicilio: Mismo domicilio de la paciente
+* Teléfono: 664-874-2215"></textarea>
+</td>
+
+<td>
+<p>Religión:</p>
+<input type="text" id="religion" placeholder="Católica">
+</td>
+
+</tr>
+
+<tr>
+
+<td>
+<p>Fecha de nacimiento:</p>
+<input type="text" id="fechadenacimiento" placeholder="14 de marzo de 2003">
+</td>
+
+<td>
+<p>Peso:</p>
+<input type="text" id="peso" placeholder="62 kg">
+</td>
+
+</tr>
+
+</table>
+
+<button onclick="enviar()">Guardar</button>
+
+<p id="mensaje"></p>
+
+<script>
+
+function enviar() {
+
+    const medicos = document.getElementById("medicotratante").value;
+    const nombrepaciente = document.getElementById("nombrepaciente").value;
+    const domicilio = document.getElementById("domicilio").value;
+    const familiar = document.getElementById("datoscompletosdefamiliarresponsable").value;
+    const fechanacimiento = document.getElementById("fechadenacimiento").value;
+    const fechahistoria = document.getElementById("fechadehistoriaclinica").value;
+    const edad = document.getElementById("edad").value;
+    const sexo = document.getElementById("sexo").value;
+    const telefono = document.getElementById("telefono").value;
+    const religion = document.getElementById("religion").value;
+    const peso = document.getElementById("peso").value;
+
+    if (
+        medicos === "" ||
+        nombrepaciente === "" ||
+        domicilio === "" ||
+        familiar === "" ||
+        fechanacimiento === "" ||
+        fechahistoria === "" ||
+        edad === "" ||
+        sexo === "" ||
+        telefono === "" ||
+        religion === "" ||
+        peso === ""
+    ) {
+
+        document.getElementById("mensaje").innerText = "Completa todos los campos";
+        return;
+    }
+
+    const datos = {
+
+        medicotratante: medicos,
+        nombrepaciente: nombrepaciente,
+        domicilio: domicilio,
+        datoscompletosdefamiliarresponsable: familiar,
+        fechadenacimiento: fechanacimiento,
+        fechadehistoriaclinica: fechahistoria,
+        edad: edad,
+        sexo: sexo,
+        telefono: telefono,
+        religion: religion,
+        peso: peso
+    };
+
+fetch("https://script.google.com/macros/s/AKfycbyRmHymwa68WyQkP4Sh_PIhwSegsWj44K_sKeCpt75a8YJOAQ-1UGlnZCf7nrfwaQdyaA/exec", {
+
+    method: "POST",
+
+    mode: "no-cors",
+
+    body: JSON.stringify(datos)
+
+})
+.then(() => {
+
+    document.getElementById("mensaje").innerText = "Datos enviados";
+
+})
+.catch(() => {
+
+    document.getElementById("mensaje").innerText = "Error al enviar";
+
+});
+
+}
+
+</script>
+
+</body>
+
+</html>
+
+<br>
+<br>
+
+<p>Antecedentes Hereditarios y Familiares</p>
+<style>
+
+table, th, td {
+
+  border:1px solid black;
+
+}
+
+</style>
+
+<table style="width:100%">
+
+  <tr>
+
+    <td>
+
+    
+
+    <textarea placeholder=
+    "1-Diabetes mellitus
+    2-Hipertensión arterial
+    3-Asma
+    4-Hipotiroidismo
+    5-Cáncer de mama"></textarea>
+
+    </td>
+<td>
+    <p>Familiar que lo padece:</p>
+<textarea placeholder="1-Abuelo materno  2-Padre  3-Hermana  4-Madre 5-Abuela paterna"></textarea>
+</td>
+
+  </tr>
+</table>
+
+<br>
+<br>
+<br>
+<br>
+
+<p>Antecedentes Personales No Patológicos</p>
+
+<table style="width:100%">
+
+  <tr>
+
+    <td>
+
+    <p>Lugar de Nacimiento:</p>
+
+    <input type="text" id="fname" name="fname" placeholder="Tijuana, Baja California">
+
+    </td>
+<td>
+    <p>Lugar de Residencia:</p>
+
+<input type="text" id="fname" name="fname" placeholder="Tijuana, Baja California">
+   <p>Fecha:</p>
+
+<input type="text" id="fname" name="fname" placeholder="hace 23 años">
+
+</td>
+  </tr>
+
+ <td>
+
+    <p>Hábito tabáquico:</p>
+
+    <input type="text" id="fname" name="fname" placeholder="Niega tabaquismo">
+
+    </td>
+
+    
+
+    <td>
+
+    <p>Ocupación actual:</p>
+
+    <input type="text" id="fname" name="fname" placeholder="Diseñadora gráfica">
+
+    </td>
+
+ 
+
+  </tr>
+
+
+
+    <tr>
+ <td>
+
+    <p>Hábito alcohólico:</p>
+
+    <input type="text" id="fname" name="fname" placeholder="Consumo ocasional en reuniones sociales">
+
+    </td>
+
+    <td>
+
+    <p>Tipo de Sangre:</p>
+
+    <input type="text" id="fname" name="fname" placeholder="O+">
+
+    </td>
+
+ 
+
+  </tr>
+
+
+
+    <tr>
+
+    <td>
+
+    <p>Ejercicio:</p>
+
+    <input type="text" id="fname" name="fname" placeholder="Realiza ejercicio 3 veces por semana">
+
+    </td>
+
+    <td>
+
+    <p>Hábitos de higiene:</p>
+
+    <textarea placeholder="Baño diario, lavado de manos frecuente y aseo bucal 3 veces al día"></textarea>
+
+    </td>
+
+ 
+
+  </tr>
+
+
+
+    <tr>
+
+   <td>
+
+    <p>Adicciones:</p>
+
+    <input type="text" id="fname" name="fname" placeholder="Niega">
+
+    </td>
+
+   <td>
+
+    <p>Alergias:</p>
+
+    <input type="text" id="fname" name="fname" placeholder="Penicilina y polvo">
+
+    </td>
+  </tr>
+
+
+
+</table>
+
+<br>
+<br>
+<br>
+<br>
+
+<p>Antecedentes Personales Patológicos</p>
+
+<table style="width:100%">
+
+  <tr>
+
+    <td>
+
+    <p>
+</p>
+
+  <textarea id="fname" name="fname" rows="8" cols="50" placeholder="
+- Varicela durante la infancia
+- Fractura de muñeca derecha
+- Gastritis diagnosticada
+Quirúrgicos
+- Apendicectomía
+- Rinoplastia "></textarea>
+
+    </td>
+<td>
+    <p>Fecha de inicio:</p>
+  <textarea id="fname" name="fname" rows="8" cols="50" placeholder=
+  "  -Fractura de muñeca a los 14
+  -Varicela a los 6 años aproximadamente
+  -Diagnostico de Gastritis en 2023
+  -Apendicectomía en 2019 
+  -Rinoplastia en 2022
+"></textarea>
+
+</td>
+  </tr>
+
+  
+</table>
+
+<br>
+ <button onclick="location.href='index2.html'">
+  Ir a la siguiente página
+</button>
+
+
+
+
+</body>
+
+</html>
+
+
+
+
+
+
+
